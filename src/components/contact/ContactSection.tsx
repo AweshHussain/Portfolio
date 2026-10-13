@@ -33,7 +33,6 @@ export const ContactSection: React.FC = () => {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
-  const [submissionMethod, setSubmissionMethod] = useState<'api' | 'mailto'>('api');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [copiedItem, setCopiedItem] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState('');
@@ -64,49 +63,39 @@ export const ContactSection: React.FC = () => {
       return;
     }
 
-    const mailtoUrl = `mailto:${profileConfig.email}?subject=${encodeURIComponent(
-      `Portfolio Inquiry from ${formData.name}`
-    )}&body=${encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    )}`;
 
-    // If Web3Forms Access Key is provided, send directly to Gmail without opening external app
-    if (WEB3FORMS_ACCESS_KEY) {
-      setIsSubmitting(true);
-      try {
-        const response = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify({
-            access_key: WEB3FORMS_ACCESS_KEY,
-            name: formData.name,
-            email: formData.email,
-            message: formData.message,
-            subject: `Portfolio Inquiry from ${formData.name}`,
-            from_name: `${formData.name} (via Portfolio)`,
-          }),
-        });
-        const data = await response.json();
-        if (data.success) {
-          setSubmissionMethod('api');
-          setSubmitted(true);
-          setFormData({ name: '', email: '', message: '' });
-          setIsSubmitting(false);
-          return;
-        }
-      } catch {
-        // Fallback to mailto on network error
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `Portfolio Inquiry from ${formData.name}`,
+          from_name: `${formData.name} (via Portfolio)`,
+        }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setErrorMessage(
+          data.message || 'Unable to send message right now. Please use WhatsApp or email directly.'
+        );
       }
+    } catch {
+      setErrorMessage('Network error while sending. Please use WhatsApp or email directly.');
+    } finally {
       setIsSubmitting(false);
     }
-
-    // Default fallback to mail client
-    setSubmissionMethod('mailto');
-    window.location.href = mailtoUrl;
-    setSubmitted(true);
   };
 
   const handleSendViaWhatsApp = () => {
@@ -416,9 +405,7 @@ export const ContactSection: React.FC = () => {
                   >
                     <Check className="w-4 h-4 flex-shrink-0" />
                     <span>
-                      {submissionMethod === 'api'
-                        ? "Thank you! Your message has been sent directly to Awesh's email inbox."
-                        : 'Draft created! Opening your mail application. You can also chat directly on WhatsApp.'}
+                      Thank you! Your message has been sent directly to Awesh's email inbox.
                     </span>
                   </motion.div>
                 )}
