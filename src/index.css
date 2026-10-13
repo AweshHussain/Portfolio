@@ -1,0 +1,355 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Editorial Palette - Luxury Obsidian Dark (Default) */
+  --bg-primary: #0C0B0A;
+  --bg-secondary: #141312;
+  --bg-card: rgba(22, 21, 20, 0.75);
+  --text-primary: #F7F4EE;
+  --text-secondary: #A19D95;
+  --accent-terracotta: #E07A5F;
+  --accent-terracotta-hover: #EC8B72;
+  --accent-terracotta-soft: rgba(224, 122, 95, 0.2);
+  --border-subtle: rgba(247, 244, 238, 0.1);
+  --border-strong: rgba(247, 244, 238, 0.2);
+  
+  /* Dimensional & Glass Tokens */
+  --glass-bg: rgba(16, 15, 14, 0.85);
+  --glass-border: rgba(247, 244, 238, 0.12);
+  --glass-blur: 16px;
+  --clay-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.7), inset 0 1px 2px rgba(224, 122, 95, 0.35);
+  
+  /* Motion & Transition Tokens */
+  --duration-fast: 180ms;
+  --duration-normal: 320ms;
+  --duration-cinematic: 800ms;
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+[data-theme="dark"] {
+  /* Explicit Dark Theme Match */
+  --bg-primary: #0C0B0A;
+  --bg-secondary: #141312;
+  --bg-card: rgba(22, 21, 20, 0.75);
+  --text-primary: #F7F4EE;
+  --text-secondary: #A19D95;
+  --accent-terracotta: #E07A5F;
+  --accent-terracotta-hover: #EC8B72;
+  --accent-terracotta-soft: rgba(224, 122, 95, 0.2);
+  --border-subtle: rgba(247, 244, 238, 0.1);
+  --border-strong: rgba(247, 244, 238, 0.2);
+  
+  --glass-bg: rgba(16, 15, 14, 0.85);
+  --glass-border: rgba(247, 244, 238, 0.12);
+  --glass-blur: 16px;
+  --clay-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.7), inset 0 1px 2px rgba(224, 122, 95, 0.35);
+}
+
+[data-theme="light"] {
+  /* Secondary Light Palette Option */
+  --bg-primary: #F5F0E7;
+  --bg-secondary: #EAE2D6;
+  --bg-card: rgba(255, 255, 255, 0.75);
+  --text-primary: #171717;
+  --text-secondary: #77736D;
+  --accent-terracotta: #C96D4F;
+  --accent-terracotta-hover: #B25A3D;
+  --accent-terracotta-soft: rgba(201, 109, 79, 0.15);
+  --border-subtle: rgba(23, 23, 23, 0.12);
+  --border-strong: rgba(23, 23, 23, 0.25);
+  
+  --glass-bg: rgba(245, 240, 231, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-blur: 16px;
+  --clay-shadow: 0 24px 48px -12px rgba(201, 109, 79, 0.22), inset 0 2px 4px rgba(255, 255, 255, 0.45);
+}
+
+/* Global Reset & Base Styles */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color var(--duration-normal) var(--ease-editorial),
+              color var(--duration-normal) var(--ease-editorial);
+  overflow-x: hidden;
+}
+
+/* Typography Utility Classes */
+.font-display {
+  font-family: 'Bebas Neue', Anton, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.font-editorial {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-signature {
+  font-family: 'Caveat', cursive;
+}
+
+/* Editorial Dividers & Hairlines */
+.border-editorial {
+  border-color: var(--border-subtle);
+}
+
+.border-editorial-strong {
+  border-color: var(--border-strong);
+}
+
+/* Subtle Claymorphic Terracotta Shape */
+.clay-circle {
+  background: radial-gradient(circle at 35% 30%, #DA8468, #C96D4F 60%, #A95437 100%);
+  box-shadow: var(--clay-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .clay-circle {
+  background: radial-gradient(circle at 35% 30%, #E38D71, #D47B5E 65%, #93462D 100%);
+  box-shadow: var(--clay-shadow);
+  border: 1px solid rgba(212, 123, 94, 0.25);
+}
+
+.clay-card {
+  box-shadow: 0 12px 30px -10px rgba(23, 23, 23, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--border-subtle);
+}
+
+[data-theme="dark"] .clay-card {
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Glassmorphism Surface */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+}
+
+/* 3D Editorial Headline Typography — Avant Garde Gothic Bold / Outfit geometric studio aesthetic */
+.editorial-3d-name {
+  font-family: 'ITC Avant Garde Gothic', 'Avant Garde', 'Outfit', 'Century Gothic', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 0.88;
+  color: #F2EDE3;
+  text-shadow:
+    /* Top-left specular highlight */
+    -1px -1px 0 rgba(255, 255, 255, 0.5),
+    /* Sharp right+down extrusion facets */
+    1px  1px  0 #E0D8CC,
+    2px  2px  0 #CEC4B6,
+    3px  3px  0 #BAB0A1,
+    4px  4px  0 #A49889,
+    5px  5px  0 #8E7F6F,
+    6px  6px  0 #776658,
+    7px  7px  0 #604F43,
+    8px  8px  0 #4A3A30,
+    9px  9px  0 #362820,
+    10px 10px 0 #251914,
+    11px 11px 0 #160D09,
+    /* Grounding shadow blur */
+    12px 12px 2px rgba(0, 0, 0, 0.50),
+    15px 15px 6px rgba(0, 0, 0, 0.70);
+}
+
+[data-theme="light"] .editorial-3d-name {
+  color: #231F1B;
+  text-shadow:
+    -1px -1px 0 rgba(255, 255, 255, 0.9),
+    1px  1px  0 #4A3D31,
+    2px  2px  0 #655549,
+    3px  3px  0 #826B5A,
+    4px  4px  0 #A0876E,
+    5px  5px  0 #C0A68A,
+    6px  6px  0 #D4C0AA,
+    8px  8px  3px rgba(23, 22, 21, 0.22);
+}
+
+@media (max-width: 1023px) {
+  .editorial-3d-name {
+    text-shadow:
+      1px  1px  0 #E0D8CC,
+      2px  2px  0 #BAB0A1,
+      3px  3px  0 #8E7F6F,
+      4px  4px  0 #604F43,
+      5px  5px  0 #362820,
+      6px  6px  0 #160D09,
+      7px  7px  3px rgba(0, 0, 0, 0.70);
+  }
+  [data-theme="light"] .editorial-3d-name {
+    text-shadow:
+      1px  1px  0 #4A3D31,
+      2px  2px  0 #826B5A,
+      3px  3px  0 #C0A68A,
+      5px  5px  3px rgba(23, 22, 21, 0.18);
+  }
+}
+
+@media (max-width: 480px) {
+  .editorial-3d-name {
+    text-shadow:
+      1px  1px  0 #E0D8CC,
+      2px  2px  0 #BAB0A1,
+      3px  3px  0 #8E7F6F,
+      4px  4px  0 #604F43,
+      5px  5px  2px rgba(0, 0, 0, 0.65);
+  }
+  [data-theme="light"] .editorial-3d-name {
+    text-shadow:
+      1px  1px  0 #4A3D31,
+      2px  2px  0 #826B5A,
+      3px  3px  0 #C0A68A,
+      4px  4px  2px rgba(23, 22, 21, 0.16);
+  }
+}
+
+/* Atmospheric Burgundy Side Lighting (Dark Theme) */
+.hero-burgundy-glow-left {
+  background: radial-gradient(
+    ellipse 100% 78% at 0% 46%,
+    rgba(88, 20, 22, 0.85) 0%,
+    rgba(75, 18, 20, 0.65) 25%,
+    rgba(55, 14, 16, 0.40) 50%,
+    rgba(35, 10, 12, 0.18) 75%,
+    transparent 100%
+  );
+}
+
+.hero-burgundy-glow-right {
+  background: radial-gradient(
+    ellipse 100% 78% at 100% 48%,
+    rgba(88, 20, 22, 0.85) 0%,
+    rgba(75, 18, 20, 0.65) 25%,
+    rgba(55, 14, 16, 0.40) 50%,
+    rgba(35, 10, 12, 0.18) 75%,
+    transparent 100%
+  );
+}
+
+/* Terracotta Atmospheric Sun Sphere with Luminous Orange Edge Glow */
+.editorial-terracotta-sun {
+  position: relative;
+  /* Existing rich terracotta interior intact */
+  background: radial-gradient(circle at 46% 38%, #B84724 0%, #A03818 35%, #75250D 70%, #461205 100%);
+  /* Narrow, crisp warm-orange luminous rim */
+  border: 2px solid rgba(255, 115, 48, 0.85);
+  box-shadow:
+    /* Restrained illumination from within */
+    inset 0 0 18px rgba(255, 120, 50, 0.40),
+    /* Crisp luminous orange edge highlight */
+    0 0 10px rgba(255, 105, 40, 0.85),
+    /* Soft diffused orange halo extending a short distance outside */
+    0 0 28px rgba(230, 85, 30, 0.45),
+    /* Gentle light falloff into the near-black background */
+    0 0 60px rgba(195, 75, 25, 0.22),
+    0 0 100px rgba(150, 50, 15, 0.10);
+}
+
+/* Subtle brighter region along the upper/top-left circumference */
+.editorial-terracotta-sun::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 9999px;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(255, 185, 125, 0.95) 0%, rgba(255, 120, 50, 0.65) 35%, rgba(201, 85, 50, 0.2) 65%, transparent 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+[data-theme="light"] .editorial-terracotta-sun,
+:root:not(.dark) .editorial-terracotta-sun {
+  background: radial-gradient(circle at 46% 38%, #DF6944 0%, #C4502B 45%, #993314 100%);
+  border: 2px solid rgba(255, 115, 48, 0.90);
+  box-shadow:
+    /* Restrained illumination from within */
+    inset 0 0 18px rgba(255, 140, 60, 0.45),
+    /* Crisp luminous orange edge highlight */
+    0 0 12px rgba(255, 105, 40, 0.80),
+    /* Soft diffused radiant orange halo */
+    0 0 28px rgba(235, 90, 30, 0.45),
+    /* Gentle warm falloff */
+    0 0 60px rgba(210, 80, 25, 0.25),
+    /* Subtle grounding depth */
+    0 12px 36px rgba(160, 50, 20, 0.18);
+}
+
+[data-theme="light"] .editorial-terracotta-sun::before,
+:root:not(.dark) .editorial-terracotta-sun::before {
+  background: linear-gradient(135deg, rgba(255, 205, 150, 1) 0%, rgba(255, 120, 50, 0.85) 35%, rgba(220, 85, 40, 0.35) 65%, transparent 100%);
+}
+
+/* Fallback when backdrop-filter is unsupported */
+@supports not (backdrop-filter: blur(10px)) {
+  .glass-panel {
+    background: var(--bg-secondary);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-terracotta);
+}
+
+/* Focus Visible States */
+:focus-visible {
+  outline: 2px solid var(--accent-terracotta);
+  outline-offset: 3px;
+}
+
+/* Typewriter Cursor Blinking */
+@keyframes typewriterBlink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-typewriter-cursor {
+  animation: typewriterBlink 0.9s infinite ease-in-out;
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

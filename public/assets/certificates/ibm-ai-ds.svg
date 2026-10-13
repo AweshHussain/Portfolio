@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E121A"/>
+      <stop offset="50%" stop-color="#141923"/>
+      <stop offset="100%" stop-color="#0B0E14"/>
+    </linearGradient>
+    <linearGradient id="goldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C96D4F"/>
+      <stop offset="30%" stop-color="#E58B6D"/>
+      <stop offset="70%" stop-color="#B85D3F"/>
+      <stop offset="100%" stop-color="#C96D4F"/>
+    </linearGradient>
+    <radialGradient id="sealGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C96D4F" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#C96D4F" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="520" fill="url(#bgGrad)"/>
+
+  <!-- Ornate Double Border -->
+  <rect x="24" y="24" width="752" height="472" rx="4" fill="none" stroke="url(#goldBorder)" stroke-width="2"/>
+  <rect x="34" y="34" width="732" height="452" rx="2" fill="none" stroke="#F5F0E7" stroke-opacity="0.12" stroke-width="1"/>
+  
+  <!-- Corner Ornaments -->
+  <path d="M 24 48 L 48 48 L 48 24" fill="none" stroke="#C96D4F" stroke-width="2"/>
+  <path d="M 776 48 L 752 48 L 752 24" fill="none" stroke="#C96D4F" stroke-width="2"/>
+  <path d="M 24 472 L 48 472 L 48 496" fill="none" stroke="#C96D4F" stroke-width="2"/>
+  <path d="M 776 472 L 752 472 L 752 496" fill="none" stroke="#C96D4F" stroke-width="2"/>
+
+  <!-- Subtle Guilloche Wave in Background -->
+  <path d="M 50 180 Q 200 140 400 180 T 750 180" fill="none" stroke="#F5F0E7" stroke-opacity="0.04" stroke-width="1"/>
+  <path d="M 50 240 Q 200 200 400 240 T 750 240" fill="none" stroke="#F5F0E7" stroke-opacity="0.04" stroke-width="1"/>
+  <path d="M 50 300 Q 200 260 400 300 T 750 300" fill="none" stroke="#F5F0E7" stroke-opacity="0.04" stroke-width="1"/>
+
+  <!-- Header / Issuer -->
+  <g transform="translate(400, 75)" text-anchor="middle">
+    <!-- IBM Striped Logo Graphic -->
+    <rect x="-42" y="0" width="84" height="18" fill="#1F70C1" rx="2" opacity="0.9"/>
+    <text x="0" y="13" font-family="'Courier New', monospace" font-size="13" font-weight="900" fill="#FFFFFF" letter-spacing="4">IBM</text>
+    <text x="0" y="44" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#C96D4F" letter-spacing="4" text-transform="uppercase">ACADEMIC &amp; SPECIALIZATION CREDENTIAL</text>
+  </g>
+
+  <!-- Certificate Title -->
+  <text x="400" y="172" text-anchor="middle" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="24" font-weight="700" fill="#F7F4EE" letter-spacing="1">
+    Artificial Intelligence &amp; Data Science
+  </text>
+  <text x="400" y="200" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12" font-weight="500" fill="#A19D95" letter-spacing="2">
+    SPECIALIZATION IN COLLABORATION WITH IBM
+  </text>
+
+  <!-- Horizontal Divider -->
+  <line x1="260" y1="225" x2="540" y2="225" stroke="#C96D4F" stroke-opacity="0.4" stroke-width="1"/>
+  <circle cx="400" cy="225" r="3" fill="#C96D4F"/>
+
+  <!-- Recipient -->
+  <text x="400" y="258" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="#7A766F" letter-spacing="3" text-transform="uppercase">
+    THIS RECOGNIZES THAT
+  </text>
+  <text x="400" y="296" text-anchor="middle" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="28" font-weight="700" fill="#FFFFFF" letter-spacing="2">
+    AWESH HUSSAIN
+  </text>
+  
+  <!-- Body text -->
+  <text x="400" y="332" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="#A19D95" letter-spacing="0.5">
+    has successfully pursued rigorous coursework in Machine Learning, Deep Neural Networks,
+  </text>
+  <text x="400" y="352" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="#A19D95" letter-spacing="0.5">
+    Statistical Modeling, and Scalable Cloud Intelligence under Arka Jain University.
+  </text>
+
+  <!-- Seal / Emblem Bottom Right -->
+  <g transform="translate(640, 410)">
+    <circle cx="0" cy="0" r="42" fill="url(#sealGlow)"/>
+    <circle cx="0" cy="0" r="34" fill="#1A1816" stroke="#C96D4F" stroke-width="2"/>
+    <circle cx="0" cy="0" r="28" fill="none" stroke="#C96D4F" stroke-width="1" stroke-dasharray="3 2"/>
+    <polygon points="0,-16 4,-6 14,-6 6,2 9,12 0,6 -9,12 -6,2 -14,-6 -4,-6" fill="#C96D4F"/>
+    <text x="0" y="18" text-anchor="middle" font-family="'Inter', sans-serif" font-size="7" font-weight="700" fill="#F7F4EE" letter-spacing="1">VERIFIED</text>
+  </g>
+
+  <!-- Signatures / Metadata Bottom Left -->
+  <g transform="translate(100, 420)">
+    <line x1="0" y1="0" x2="160" y2="0" stroke="#F5F0E7" stroke-opacity="0.3" stroke-width="1"/>
+    <text x="0" y="16" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#F7F4EE">ARKA JAIN UNIVERSITY &amp; IBM</text>
+    <text x="0" y="28" font-family="'Courier New', monospace" font-size="8" fill="#7A766F">ID: AJU-IBM-AIDS-2025-094</text>
+  </g>
+
+  <!-- Date Bottom Center -->
+  <g transform="translate(360, 420)">
+    <text x="0" y="16" font-family="'Inter', sans-serif" font-size="9" font-weight="500" fill="#A19D95">Academic Session</text>
+    <text x="0" y="28" font-family="'Courier New', monospace" font-size="8" fill="#C96D4F">2024 – 2028</text>
+  </g>
+</svg>

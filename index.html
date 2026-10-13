@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" class="dark" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Force page to open at top (Home) on reload, preventing jump to previously scrolled sections
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      if (window.location.hash && !window.location.hash.startsWith('#/')) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+      window.scrollTo(0, 0);
+    </script>
+    <title>Awesh Hussain | Machine Learning Engineer</title>
+    <meta
+      name="description"
+      content="Portfolio of Awesh Hussain, showcasing machine learning, artificial intelligence, computer vision, data-driven applications, and software development projects."
+    />
+    <meta name="author" content="Awesh Hussain" />
+    <meta name="theme-color" content="#0B0B0C" />
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Awesh Hussain | Machine Learning Engineer" />
+    <meta property="og:description" content="Portfolio of Awesh Hussain, showcasing machine learning, artificial intelligence, computer vision, data-driven applications, and software development projects." />
+    <meta property="og:image" content="/assets/projects/chakravat-manthan.svg" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Awesh Hussain | Machine Learning Engineer" />
+    <meta name="twitter:description" content="Portfolio of Awesh Hussain, showcasing machine learning, artificial intelligence, computer vision, data-driven applications, and software development projects." />
+    <meta name="twitter:image" content="/assets/projects/chakravat-manthan.svg" />
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-[#0B0B0C] text-[#F7F4EE] antialiased selection:bg-terracotta selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

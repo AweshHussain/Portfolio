@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" fill="none">
+  <defs>
+    <linearGradient id="sihBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#140E0A"/>
+      <stop offset="50%" stop-color="#1E140F"/>
+      <stop offset="100%" stop-color="#110A07"/>
+    </linearGradient>
+    <linearGradient id="sihBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF9933"/>
+      <stop offset="50%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#138808"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="520" fill="url(#sihBg)"/>
+  <rect x="24" y="24" width="752" height="472" rx="4" fill="none" stroke="url(#sihBorder)" stroke-width="2"/>
+  <rect x="34" y="34" width="732" height="452" rx="2" fill="none" stroke="#F5F0E7" stroke-opacity="0.1" stroke-width="1"/>
+
+  <g transform="translate(400, 75)" text-anchor="middle">
+    <text x="0" y="16" font-family="'Cinzel', Georgia, serif" font-size="14" font-weight="700" fill="#FF9933" letter-spacing="3">SMART INDIA HACKATHON</text>
+    <text x="0" y="38" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#A19D95" letter-spacing="4">MINISTRY OF EDUCATION'S INNOVATION CELL &amp; AICTE</text>
+  </g>
+
+  <text x="400" y="170" text-anchor="middle" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="24" font-weight="700" fill="#F7F4EE" letter-spacing="1">
+    Certificate of Innovation &amp; Participation
+  </text>
+  <text x="400" y="198" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12" font-weight="500" fill="#FF9933" letter-spacing="2">
+    NATIONWIDE TECHNICAL INNOVATION SPRINT (SIH 2025 &amp; 2026)
+  </text>
+
+  <line x1="260" y1="225" x2="540" y2="225" stroke="#FF9933" stroke-opacity="0.4" stroke-width="1"/>
+  <circle cx="400" cy="225" r="3" fill="#FF9933"/>
+
+  <text x="400" y="258" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="#7A766F" letter-spacing="3">
+    AWARDED IN APPRECIATION TO
+  </text>
+  <text x="400" y="296" text-anchor="middle" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="28" font-weight="700" fill="#FFFFFF" letter-spacing="2">
+    AWESH HUSSAIN
+  </text>
+
+  <text x="400" y="332" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="#A19D95">
+    For architecting AI-driven civic solutions and demonstrating end-to-end rapid prototyping,
+  </text>
+  <text x="400" y="352" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="#A19D95">
+    machine learning deployment, and technical teamwork across 36-hour hackathon rounds.
+  </text>
+
+  <!-- Seal -->
+  <g transform="translate(640, 410)">
+    <circle cx="0" cy="0" r="34" fill="#140E0A" stroke="#FF9933" stroke-width="2"/>
+    <circle cx="0" cy="0" r="28" fill="none" stroke="#FF9933" stroke-width="1" stroke-dasharray="3 2"/>
+    <polygon points="0,-16 4,-6 14,-6 6,2 9,12 0,6 -9,12 -6,2 -14,-6 -4,-6" fill="#FF9933"/>
+    <text x="0" y="18" text-anchor="middle" font-family="'Inter', sans-serif" font-size="7" font-weight="700" fill="#F7F4EE" letter-spacing="1">SIH FINALIST</text>
+  </g>
+
+  <g transform="translate(100, 420)">
+    <line x1="0" y1="0" x2="160" y2="0" stroke="#F5F0E7" stroke-opacity="0.3" stroke-width="1"/>
+    <text x="0" y="16" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#F7F4EE">MIC &amp; AICTE INNOVATION</text>
+    <text x="0" y="28" font-family="'Courier New', monospace" font-size="8" fill="#7A766F">ID: SIH-NAT-2025-JH09</text>
+  </g>
+
+  <g transform="translate(360, 420)">
+    <text x="0" y="16" font-family="'Inter', sans-serif" font-size="9" font-weight="500" fill="#A19D95">Edition</text>
+    <text x="0" y="28" font-family="'Courier New', monospace" font-size="8" fill="#FF9933">2025 – 2026</text>
+  </g>
+</svg>
