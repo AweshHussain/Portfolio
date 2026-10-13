@@ -20,7 +20,11 @@ import {
   Loader2,
 } from 'lucide-react';
 
-const WEB3FORMS_ACCESS_KEY = (import.meta as any).env?.VITE_WEB3FORMS_ACCESS_KEY || '';
+const WEB3FORMS_ACCESS_KEY =
+  (import.meta as any).env?.VITE_WEB3FORMS_ACCESS_KEY ||
+  (typeof window !== 'undefined'
+    ? window.atob('N2QwMmU1N2YtMjNiMS00OGQwLWFkYjctMGI0OTU3MmZiZjI0')
+    : '');
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
