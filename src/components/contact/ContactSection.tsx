@@ -17,7 +17,10 @@ import {
   Github,
   Linkedin,
   Instagram,
+  Loader2,
 } from 'lucide-react';
+
+const WEB3FORMS_ACCESS_KEY = (import.meta as any).env?.VITE_WEB3FORMS_ACCESS_KEY || '';
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -26,6 +29,8 @@ export const ContactSection: React.FC = () => {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submissionMethod, setSubmissionMethod] = useState<'api' | 'mailto'>('api');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [copiedItem, setCopiedItem] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -46,7 +51,7 @@ export const ContactSection: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage('');
 
@@ -55,14 +60,47 @@ export const ContactSection: React.FC = () => {
       return;
     }
 
-    // Prepare mailto link with encoded parameters
-    const subject = encodeURIComponent(`Portfolio Inquiry from ${formData.name}`);
-    const body = encodeURIComponent(
+    const mailtoUrl = `mailto:${profileConfig.email}?subject=${encodeURIComponent(
+      `Portfolio Inquiry from ${formData.name}`
+    )}&body=${encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
-    const mailtoUrl = `mailto:${profileConfig.email}?subject=${subject}&body=${body}`;
+    )}`;
 
-    // Open mail client
+    // If Web3Forms Access Key is provided, send directly to Gmail without opening external app
+    if (WEB3FORMS_ACCESS_KEY) {
+      setIsSubmitting(true);
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_ACCESS_KEY,
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+            subject: `Portfolio Inquiry from ${formData.name}`,
+            from_name: `${formData.name} (via Portfolio)`,
+          }),
+        });
+        const data = await response.json();
+        if (data.success) {
+          setSubmissionMethod('api');
+          setSubmitted(true);
+          setFormData({ name: '', email: '', message: '' });
+          setIsSubmitting(false);
+          return;
+        }
+      } catch {
+        // Fallback to mailto on network error
+      }
+      setIsSubmitting(false);
+    }
+
+    // Default fallback to mail client
+    setSubmissionMethod('mailto');
     window.location.href = mailtoUrl;
     setSubmitted(true);
   };
@@ -336,10 +374,20 @@ export const ContactSection: React.FC = () => {
                 {/* Submit Action Button */}
                 <button
                   type="submit"
-                  className="w-full py-4 px-6 rounded-xl font-mono text-xs sm:text-sm uppercase tracking-widest font-bold text-white bg-gradient-to-r from-terracotta via-[#DE5B41] to-[#C84B32] hover:opacity-95 active:scale-[0.99] transition-all shadow-lg hover:shadow-terracotta/25 flex items-center justify-center gap-2.5 group cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full py-4 px-6 rounded-xl font-mono text-xs sm:text-sm uppercase tracking-widest font-bold text-white bg-gradient-to-r from-terracotta via-[#DE5B41] to-[#C84B32] hover:opacity-95 active:scale-[0.99] transition-all shadow-lg hover:shadow-terracotta/25 flex items-center justify-center gap-2.5 group cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  <span>SEND MESSAGE</span>
-                  <Send className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5" />
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>SENDING MESSAGE...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>SEND MESSAGE</span>
+                      <Send className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5" />
+                    </>
+                  )}
                 </button>
 
                 {/* Alternative Quick WhatsApp Option */}
@@ -364,7 +412,9 @@ export const ContactSection: React.FC = () => {
                   >
                     <Check className="w-4 h-4 flex-shrink-0" />
                     <span>
-                      Draft created! Opening your mail application. You can also chat directly on WhatsApp.
+                      {submissionMethod === 'api'
+                        ? "Thank you! Your message has been sent directly to Awesh's email inbox."
+                        : 'Draft created! Opening your mail application. You can also chat directly on WhatsApp.'}
                     </span>
                   </motion.div>
                 )}
